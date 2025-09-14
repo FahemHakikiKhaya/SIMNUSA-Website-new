@@ -732,6 +732,10 @@
                 width: 150px;
                 height: 150px;
             }
+
+             .pillars {
+                grid-template-columns: 1fr; /* stack pillars vertically on small screens */
+            }
         }
 
         /* Scroll animations */
@@ -791,7 +795,6 @@
                         <i class="fas fa-rocket"></i>
                         Explore Services
                     </a>
-                    <a href="#contact" class="btn-secondary">View Case Studies</a>
                 </div>
             </div>
             <!-- <div class="hero-visual fade-in">
@@ -1099,7 +1102,7 @@
         });
 
         // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
+       document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Get form data
@@ -1115,20 +1118,21 @@
                 return;
             }
             
-            // Simulate form submission
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.innerHTML;
-            
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitButton.disabled = true;
-            
-            setTimeout(() => {
-                alert('Thank you for your interest! We\'ll get back to you within 24 hours.');
-                this.reset();
-                submitButton.innerHTML = originalText;
-                submitButton.disabled = false;
-            }, 2000);
+            // Construct email
+            const recipient = 'marsya@simnusa.com'; // <-- change to your email
+            const subject = `New Inquiry from ${name}`;
+            const body = 
+        `Name: ${name}
+        Email: ${email}
+        Company: ${company}
+        Message:
+        ${message}`;
+
+            // Encode and open email client
+            const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
         });
+
 
         // Add magnetic effect to CTA buttons
         document.querySelectorAll('.btn-primary, .btn-secondary, .cta-button').forEach(button => {
