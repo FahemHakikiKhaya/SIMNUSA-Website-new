@@ -472,10 +472,12 @@
 
         .partners-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
             align-items: center;
             justify-items: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .partner-logo {
@@ -688,8 +690,9 @@
             }
 
             .partners-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 2rem;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1.5rem;
+                max-width: 600px;
             }
 
             .floating-logo {
